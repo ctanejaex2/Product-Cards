@@ -1,0 +1,6 @@
+<app-product-card 
+    *ngFor="let currProduct of products; let i = index"
+    [product]="currProduct"
+    [totalProducts]="products.length"
+    (positionSelection)="onPositionChanged(i, $event)">
+</app-product-card> 

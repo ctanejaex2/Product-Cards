@@ -1,0 +1,19 @@
+card-component {
+    display: block;
+}
+
+.card-component {
+    margin-bottom: 40px;
+    text-align: center;
+    border-radius: 4px;
+    padding: 20px 0;
+    align-items: center;
+    width: 400px;
+    box-shadow: 0 1px 16px 0 rgba(0, 0, 0, .2), 0 2px 8px 0 rgba(0, 0, 0, .14), 0 4px 8px -1px rgba(0, 0, 0, .12);
+}
+
+.position-selector {
+    text-align: right;
+    margin-right: 10px;
+    padding: 10px;
+}

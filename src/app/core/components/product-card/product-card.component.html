@@ -1,0 +1,10 @@
+<div class="card-component">
+    <div class="position-selector">
+        <label for="position">Select position: </label>
+        <select name="position" id="position" #positionSelector (change)="onPositionSelected($event)">
+        </select>
+    </div>
+    <div class="product-name">{{product?.name}}</div>
+    <div class="product-name"><img [src]="product?.imgUrl" height="300px" width="200px"></div>
+    <div class="product-name">{{product?.price | currency: 'INR'}}</div>
+</div>
