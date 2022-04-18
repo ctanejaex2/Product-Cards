@@ -1,6 +1,21 @@
-<app-product-card 
+<!-- <app-product-card 
     *ngFor="let currProduct of products; let i = index"
     [product]="currProduct"
     [totalProducts]="products.length"
     (positionSelection)="onPositionChanged(i, $event)">
+</app-product-card>  -->
+
+<ng-container
+    *ngFor="let currProduct of products; let i = index"
+>
+<app-product-card 
+    *ngIf="currProduct.id else missingIdTemplate"
+    [product]="currProduct"
+    [totalProducts]="products.length"
+    (positionSelection)="onPositionChanged(i, $event)">
 </app-product-card> 
+</ng-container>
+
+<ng-template #missingIdTemplate>
+    <h1>NO ID PROVIDED</h1>
+</ng-template>
