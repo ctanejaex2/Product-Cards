@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
 import { product } from 'src/app/model/products';
 @Component({
   selector: 'app-product-card',
@@ -7,21 +7,30 @@ import { product } from 'src/app/model/products';
 })
 export class ProductCardComponent implements AfterViewInit {
 
+
   @Input() product?: product;
   @Input() totalProducts: number = 0;
   @ViewChild('positionSelector') positionSelector?: ElementRef;
   @Output() positionSelection = new EventEmitter<number>();
+  @Output() priceRangeEvent = new EventEmitter<string>();
 
-  onPositionSelected(event: any) {
+  priceRange: string = '';
+
+
+  onPositionSelected(event: any, positionSelector: any) {
     this.positionSelection.emit(event.target.value - 1);
+    positionSelector.selectedIndex = 0;
   }
 
-  constructor() {
-  }
+
+
+
 
   ngAfterViewInit(): void {
     this.createPositionOptions(this.totalProducts);
   }
+
+
 
   createPositionOptions(totalOptions: number) {
     const defaultPosition = document.createElement('option');
@@ -29,7 +38,7 @@ export class ProductCardComponent implements AfterViewInit {
     defaultPosition.textContent = 'default';
     this.positionSelector?.nativeElement.appendChild(defaultPosition);
 
-    for (let i = 1; i <= this.totalProducts; i++) {
+    for (let i = 1; i <= totalOptions; i++) {
       const option = document.createElement('option');
       option.setAttribute('value', `${i}`);
       option.textContent = `${i}`;

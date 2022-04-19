@@ -1,6 +1,27 @@
-<app-product-card 
-    *ngFor="let currProduct of products; let i = index"
-    [product]="currProduct"
-    [totalProducts]="products.length"
-    (positionSelection)="onPositionChanged(i, $event)">
-</app-product-card> 
+<div>
+    <app-product-card *ngFor="let currProduct of products; let i = index" [product]="currProduct"
+        [totalProducts]="products.length" (positionSelection)="onPositionChanged(i, $event)"
+        (priceRangeEvent)="setPriceRange($event)">
+
+        <!-- <ng-content *ngTemplateOutlet="priceRangeTemplate; context: {currPrice: currProduct.price}" ></ng-content> -->
+        <!-- <ng-content *ngTemplateOutlet="priceRangeTemplate"></ng-content> -->
+        <ng-container *ngIf="currProduct.price >= 100; then priceHighTemplate; else priceLowTemplate"></ng-container>
+    </app-product-card>
+
+
+</div>
+<ng-template #priceHighTemplate>
+    <p>
+        Price is too high
+</ng-template>
+
+<ng-template #priceLowTemplate>
+    <p>
+        Price is too low
+</ng-template>
+<!-- 
+<ng-template let-currProductPrice = "currPrice" #priceRangeTemplate>
+    <p>
+        Price is too {{(currProductPrice >= 100) ? 'high' : 'low'}}
+    </p>
+</ng-template> -->

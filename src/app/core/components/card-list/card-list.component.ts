@@ -8,6 +8,7 @@ import { PRODUCTS } from 'src/assets/db-data';
 })
 export class CardListComponent {
   products = PRODUCTS['arrayOfProducts'];
+  priceRange: string = '';
 
   constructor() { }
 
@@ -16,6 +17,10 @@ export class CardListComponent {
     let product = this.products[currentPosition];
     this.products.splice(currentPosition, 1);
     this.products.splice(selectedPosition, 0, product);
+  }
+
+  setPriceRange(priceRange: any) {
+    this.priceRange = priceRange;
   }
 
 
