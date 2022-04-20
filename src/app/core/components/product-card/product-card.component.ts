@@ -15,16 +15,16 @@ export class ProductCardComponent implements AfterViewInit {
   @Output() priceRangeEvent = new EventEmitter<string>();
 
   priceRange: string = '';
-
+  inputNumbersOnly(event: any): boolean {
+    const charCode = event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) return false;
+    return true;
+  }
 
   onPositionSelected(event: any, positionSelector: any) {
     this.positionSelection.emit(event.target.value - 1);
     positionSelector.selectedIndex = 0;
   }
-
-
-
-
 
   ngAfterViewInit(): void {
     this.createPositionOptions(this.totalProducts);

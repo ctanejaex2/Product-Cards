@@ -6,9 +6,9 @@
     </div>
     <div class="product-name">{{product?.name}}</div>
     <div class="product-name"><img [src]="product?.imgUrl" height="300px" width="200px"></div>
-    
-    <!-- <div class="product-name"><input type="text" value={{product?.price}} onkeyup="this.value = this.value.replace(/[^\d]/,'')"></div> -->
-    
+
+    <div class="product-name"><input type="text" value={{product?.price}} (keypress)="inputNumbersOnly($event)"></div>
+
     <div class="product-name">{{product?.price | currency: 'INR'}}</div>
     <ng-content></ng-content>
 </div>
