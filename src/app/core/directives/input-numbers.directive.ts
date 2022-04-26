@@ -19,7 +19,4 @@ export class InputNumbersDirective implements OnInit {
   ngOnInit(): void {
     this.val = this.el.nativeElement.value;
   }
-
-
 }
-

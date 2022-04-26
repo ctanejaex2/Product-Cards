@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CardListComponent } from './core/components/card-list/card-list.component';
+import { ProductCardListComponent } from './core/components/product-card-list/product-card-list.component';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +8,5 @@ import { CardListComponent } from './core/components/card-list/card-list.compone
 })
 export class AppComponent {
   title = 'component-exercise';
+
 }

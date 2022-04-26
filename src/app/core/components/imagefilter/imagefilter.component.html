@@ -1,0 +1,24 @@
+<div>
+    <div>
+        Bed: <input type="number" #inputBed>
+    </div>
+    <div>
+        Bath: <input type="number" #inputBath>
+    </div>
+    <div>
+        Story: <input type="number" #inputStory>
+    </div>
+    <div>
+        Price L: <input type="number" #inputPriceLow>
+    </div>
+    <div>
+        Price H : <input type="number" #inputPriceHigh>
+    </div>
+    <button
+        (click)="onSubmitFilters(inputBed.value, inputBath.value , inputStory.value,inputPriceLow.value,inputPriceHigh.value)">Submit</button>
+</div>
+
+<app-display-images *ngIf="imageResult.length != 0" [imageUrls]="imageResult"></app-display-images>
+
+<app-pagination *ngIf="filteredImagesCount | async as imagesCount" [homeCount]="imagesCount"
+    (currentPageIndex)="onPageSelected($event)"></app-pagination>

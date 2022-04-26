@@ -1,14 +1,16 @@
-<div class="card-component">
+<div class="card-component" #productCard>
     <div class="position-selector">
         <label for="position">Select position: </label>
         <select name="position" id="position" #positionSelector (change)="onPositionSelected($event, positionSelector)">
         </select>
     </div>
-    <div class="product-name">{{product?.name}}</div>
-    <div class="product-name"><img [src]="product?.imgUrl" height="300px" width="200px"></div>
-
-    <div class="product-name"><input type="text" value={{product?.price}} inputNumbers></div>
-
-    <div class="product-name">{{product?.price | currency: 'INR'}}</div>
+    <div class="product-name" #productName>{{product?.name}}</div>
+    <div class="product-name"><img [src]="product?.imgUrl" height="300px" width="200px" #productImage></div>
+    <div class="product-name"><input type="text" value={{product?.price}} inputNumbers #productPrice></div>
+    <div class="product-name" #productPrice>{{product?.price | currency: 'INR'}}</div>
+    <div class="product-name" #editProductDetails><button routerLink='{{product?.id}}'>Edit</button>
+    </div>
     <ng-content></ng-content>
 </div>
+
+<router-outlet></router-outlet>

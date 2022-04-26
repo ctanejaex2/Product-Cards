@@ -1,0 +1,3 @@
+<ng-container *ngFor="let page of [].constructor(totalPages) let currPageNum = index">
+    <button (click)="onPageSelected(currPageNum + 1)">{{currPageNum + 1}}</button>
+</ng-container>
